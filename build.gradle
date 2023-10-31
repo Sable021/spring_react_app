@@ -52,8 +52,8 @@ task npmBuild(type: NpmTask) {
 
 task copyFrontendToBuild(type: Copy) {
 	dependsOn 'npmBuild'
-	from "${project.projectDir}/frontend/build"
-	into "${project.projectDir}build/resources/main/public"
+	from "${project.projectDir}/frontend/dist"
+	into "${project.projectDir}/src/main/resources/static"
 }
 
 processResources {
