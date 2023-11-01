@@ -59,7 +59,3 @@ task copyFrontendToBuild(type: Copy) {
 processResources {
 	dependsOn 'copyFrontendToBuild'
 }
-
-tasks.named('test') {
-	useJUnitPlatform()
-}
