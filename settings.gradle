@@ -1,2 +1,2 @@
 rootProject.name = 'spring_react_app'
-include ':frontend'
+    include ':frontend'
