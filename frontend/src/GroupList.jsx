@@ -45,7 +45,7 @@ const GroupList = () => {
         <td style={{ whiteSpace: "nowrap" }}>{group.name}</td>
         <td>{address}</td>
         <td>
-          {groups.events.map((event) => {
+          {group.events.map((event) => {
             return (
               <div key={event.id}>
                 {new Intl.DateTimeFormat("en-US", {
