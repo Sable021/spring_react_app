@@ -56,3 +56,4 @@ out/
 
 ### Generated assets files ###
 src/main/resources/static/assets/index-*.js
+src/main/resources/static/assets/index-*.css

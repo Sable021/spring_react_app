@@ -15,7 +15,7 @@ const AppNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Navbar color="dark" dark expand="md">
+    <Navbar color="dark" dark expand="lg">
       <NavbarBrand tag={Link} to="/">
         Home
       </NavbarBrand>

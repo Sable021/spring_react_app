@@ -88,14 +88,14 @@ const GroupList = () => {
         </div>
         <h3>My JUG Tour</h3>
         <Table className="mt-4">
-          <thread>
+          <thead>
             <tr>
               <th width="20%">Name</th>
               <th width="20%">Location</th>
               <th>Events</th>
               <th width="10%">Actions</th>
             </tr>
-          </thread>
+          </thead>
           <tbody>{groupList}</tbody>
         </Table>
       </Container>
