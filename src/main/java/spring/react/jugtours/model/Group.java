@@ -1,29 +1,25 @@
 package spring.react.jugtours.model;
 
+import java.util.Set;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.CascadeType;
-
-import java.util.Set;
+import lombok.Setter;
 
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
-@Entity
-@Table(name = "user_group")
+@Document(collection = "user_group")
 public class Group {
     @Id
-    @GeneratedValue
-    private Long id;
+    @Setter(AccessLevel.NONE)
+    private String id;
 
     @NonNull
     private String name;
@@ -38,6 +34,5 @@ public class Group {
 
     private String postalCode;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Event> events;
 }

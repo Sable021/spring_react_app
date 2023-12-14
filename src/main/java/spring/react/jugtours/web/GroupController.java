@@ -20,15 +20,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import spring.react.jugtours.model.Group;
-import spring.react.jugtours.model.GroupRepository;
+import spring.react.jugtours.repositories.GroupMongoRepository;
 
 @RestController
 @RequestMapping("/api")
 public class GroupController {
     private final Logger log = LoggerFactory.getLogger(GroupController.class);
-    private GroupRepository groupRepository;
+    private GroupMongoRepository groupRepository;
 
-    public GroupController(GroupRepository groupRepository) {
+    public GroupController(GroupMongoRepository groupRepository) {
         this.groupRepository = groupRepository;
     }
 
@@ -38,7 +38,7 @@ public class GroupController {
     }
 
     @GetMapping("/group/{id}")
-    ResponseEntity<?> getGroup(@PathVariable Long id) {
+    ResponseEntity<?> getGroup(@PathVariable String id) {
         Optional<Group> group = groupRepository.findById(id);
         return group.map(response -> ResponseEntity.ok().body(response))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -61,7 +61,7 @@ public class GroupController {
     }
 
     @DeleteMapping("/group/{id}")
-    public ResponseEntity<?> deleteGroup(@PathVariable Long id) {
+    public ResponseEntity<?> deleteGroup(@PathVariable String id) {
         log.info("Request to delete group: {}", id);
         groupRepository.deleteById(id);
         return ResponseEntity.ok().build();

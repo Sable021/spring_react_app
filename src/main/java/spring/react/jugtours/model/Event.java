@@ -1,27 +1,27 @@
 package spring.react.jugtours.model;
 
+import java.time.Instant;
+import java.util.Set;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-
-import java.time.Instant;
-import java.util.Set;
+import lombok.Setter;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
+@Document
 public class Event {
     @Id
-    @GeneratedValue
-    private Long id;
+    @Setter(AccessLevel.NONE)
+    private String id;
 
     private Instant date;
 
@@ -29,6 +29,5 @@ public class Event {
 
     private String description;
 
-    @ManyToMany
     private Set<User> attendees;
 }
