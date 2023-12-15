@@ -34,7 +34,12 @@ public class GroupController {
 
     @GetMapping("/groups")
     Collection<Group> groups() {
-        return groupRepository.findAll();
+        Collection<Group> data = groupRepository.findAll();
+
+        System.out.println("Printing all groups events...");
+        data.forEach((group) -> System.out.println((group.getEvents())));
+
+        return data;
     }
 
     @GetMapping("/group/{id}")

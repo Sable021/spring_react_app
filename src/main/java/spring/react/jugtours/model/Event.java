@@ -21,7 +21,7 @@ import lombok.Setter;
 public class Event {
     @Id
     @Setter(AccessLevel.NONE)
-    private String id;
+    private Long id;
 
     private Instant date;
 

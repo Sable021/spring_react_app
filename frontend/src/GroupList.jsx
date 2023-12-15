@@ -35,6 +35,25 @@ const GroupList = () => {
     return <p>Loading...</p>;
   }
 
+  function renderEvents(group) {
+    if (group.events == null) {
+      return <div />;
+    }
+    const eventList = group.events.map((event) => {
+      return (
+        <div key={event.id}>
+          {new Intl.DateTimeFormat("en-US", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+          }).format(new Date(event.date))}
+          :{event.title}
+        </div>
+      );
+    });
+    return eventList;
+  }
+
   const groupList = groups.map((group) => {
     const address = `${group.address || ""} ${group.city || ""} ${
       group.stateOrProvince || ""
@@ -44,20 +63,7 @@ const GroupList = () => {
       <tr key={group.id}>
         <td style={{ whiteSpace: "nowrap" }}>{group.name}</td>
         <td>{address}</td>
-        <td>
-          {group.events.map((event) => {
-            return (
-              <div key={event.id}>
-                {new Intl.DateTimeFormat("en-US", {
-                  year: "numeric",
-                  month: "2-digit",
-                  day: "2-digit",
-                }).format(new Date(event.date))}
-                :{event.title}
-              </div>
-            );
-          })}
-        </td>
+        <td>{renderEvents(group)}</td>
         <td>
           <ButtonGroup>
             <Button
